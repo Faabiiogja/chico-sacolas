@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import logo from '../assets/logo-chico-sacolas.png';
 
 const navLinks = [
@@ -15,7 +16,7 @@ const whatsappUrl = 'https://wa.me/5513997646549?text=Ol%C3%A1%2C%20gostaria%20d
   <div class="container footer__inner">
     <div class="footer__top">
       <a href="/" class="footer__logo" aria-label="Chico Sacolas - página inicial">
-        <img src={logo.src} alt="Chico Sacolas" class="footer__logo-img" width={logo.width} height={logo.height} loading="lazy" />
+        <Image src={logo} alt="Chico Sacolas" class="footer__logo-img" height={300} width={450} format="webp" loading="lazy" />
       </a>
 
       <nav class="footer__nav" aria-label="Links do rodapé">
