@@ -17,19 +17,23 @@ import gallery4 from '../assets/images/gallery-4.png';
 
   <div class="gallery-grid">
     <div class="gallery-item" data-event="click_gallery" data-location="gallery" data-label="sacola-premium-corda-preta">
-      <Image src={gallery1} alt="Sacola preta premium com corda" class="gallery-img" loading="lazy" />
+      <Image src={gallery1} alt="Sacola preta premium com corda" class="gallery-img" loading="lazy"
+        widths={[400, 700, 1024]} sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 40vw" />
       <div class="gallery-hover-label"><span>SACOLA PREMIUM · CORDA PRETA</span></div>
     </div>
     <div class="gallery-item" data-event="click_gallery" data-location="gallery" data-label="sacola-kraft-acabamento-fino">
-      <Image src={gallery2} alt="Sacola kraft com acabamento fino" class="gallery-img" loading="lazy" />
+      <Image src={gallery2} alt="Sacola kraft com acabamento fino" class="gallery-img" loading="lazy"
+        widths={[300, 500, 700]} sizes="(max-width: 639px) 50vw, (max-width: 1023px) 50vw, 25vw" />
       <div class="gallery-hover-label"><span>SACOLA KRAFT · ACABAMENTO FINO</span></div>
     </div>
     <div class="gallery-item" data-event="click_gallery" data-location="gallery" data-label="colecao-luxo-serigrafia">
-      <Image src={gallery3} alt="Sacola branca luxo com serigrafia" class="gallery-img" loading="lazy" />
+      <Image src={gallery3} alt="Sacola branca luxo com serigrafia" class="gallery-img" loading="lazy"
+        widths={[300, 500, 700]} sizes="(max-width: 639px) 50vw, (max-width: 1023px) 33vw, 33vw" />
       <div class="gallery-hover-label"><span>COLEÇÃO LUXO · SERIGRAFIA</span></div>
     </div>
     <div class="gallery-item" data-event="click_gallery" data-location="gallery" data-label="estampa-total-full-print">
-      <Image src={gallery4} alt="Sacola com estampa total full print" class="gallery-img" loading="lazy" />
+      <Image src={gallery4} alt="Sacola com estampa total full print" class="gallery-img" loading="lazy"
+        widths={[300, 500, 700]} sizes="(max-width: 639px) 50vw, 25vw" />
       <div class="gallery-hover-label"><span>ESTAMPA TOTAL · FULL PRINT</span></div>
     </div>
     <div class="gallery-item" data-event="click_gallery" data-location="gallery" data-label="tecido-4-cores">
