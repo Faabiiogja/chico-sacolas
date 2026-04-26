@@ -13,6 +13,8 @@
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.2",
+    "@fontsource-variable/caveat": "^5.2.8",
+    "@fontsource/special-elite": "^5.2.8",
     "astro": "^6.1.9"
   },
   "devDependencies": {
