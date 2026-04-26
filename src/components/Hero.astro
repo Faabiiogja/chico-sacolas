@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import heroSacola from '../assets/images/hero-sacola.png';
+import { WHATSAPP_URL } from '../consts';
 ---
 
 <section class="hero" id="inicio">
@@ -13,7 +14,14 @@ import heroSacola from '../assets/images/hero-sacola.png';
     </h1>
     <p class="hero-sub">Sacolas kraft personalizadas com sua logo para lojas, eventos e promoções. Atendemos Guarujá, Santos e toda a Baixada Santista.</p>
     <div class="hero-cta-row">
-      <a href="#contato" class="btn btn-primary">Ver nosso trabalho →</a>
+      <a
+        href={WHATSAPP_URL}
+        target="_blank"
+        rel="noopener"
+        class="btn btn-primary"
+        data-event="click_whatsapp"
+        data-location="hero"
+      >Solicitar Orçamento →</a>
       <a href="#processo" class="btn btn-outline" style="color:rgba(247,242,232,.7);border-color:rgba(247,242,232,.2);">Como funciona</a>
     </div>
     <div class="hero-stats">

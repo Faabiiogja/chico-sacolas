@@ -1,0 +1,95 @@
+---
+import { GTM_ID } from '../config/company';
+---
+
+{/* GTM — substitua GTM_ID em src/config/company.ts */}
+<script define:vars={{ GTM_ID }}>
+  window.dataLayer = window.dataLayer || [];
+  (function (w, d, s, l, i) {
+    w[l] = w[l] || [];
+    w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+    var f = d.getElementsByTagName(s)[0],
+      j = d.createElement(s),
+      dl = l !== 'dataLayer' ? '&l=' + l : '';
+    j.async = true;
+    j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+    f.parentNode.insertBefore(j, f);
+  })(window, document, 'script', 'dataLayer', GTM_ID);
+</script>
+
+{/* Rastreamento de eventos — lê atributos data-event / data-location / data-label */}
+<script>
+  declare global {
+    interface Window {
+      dataLayer: Record<string, unknown>[];
+    }
+  }
+
+  window.dataLayer = window.dataLayer || [];
+
+  // ── Clicks (links, botões, itens de galeria) ──────────────────────────────
+  document.addEventListener('click', (e: MouseEvent) => {
+    const el = (e.target as Element).closest('[data-event]') as HTMLElement | null;
+    if (!el || el.tagName === 'FORM') return;
+
+    const eventName = el.dataset.event ?? '';
+    const location = el.dataset.location ?? '';
+    const label = el.dataset.label;
+
+    window.dataLayer.push({
+      event: eventName,
+      event_location: location,
+      ...(label ? { event_label: label } : {}),
+    });
+
+    // quote_request dispara junto com whatsapp clicks e submits de formulário
+    if (eventName === 'click_whatsapp' || eventName === 'form_submit') {
+      window.dataLayer.push({ event: 'quote_request', event_location: location });
+    }
+  });
+
+  // ── Submit de formulários ─────────────────────────────────────────────────
+  document.querySelectorAll<HTMLFormElement>('form[data-event]').forEach((form) => {
+    form.addEventListener('submit', () => {
+      window.dataLayer.push({
+        event: form.dataset.event ?? 'form_submit',
+        event_location: form.dataset.location ?? '',
+      });
+      window.dataLayer.push({
+        event: 'quote_request',
+        event_location: form.dataset.location ?? '',
+      });
+    });
+  });
+
+  // ── form_start — primeiro foco em qualquer campo do formulário ────────────
+  document.querySelectorAll<HTMLFormElement>('form[data-event]').forEach((form) => {
+    let started = false;
+    form.querySelectorAll('input, textarea, select').forEach((field) => {
+      field.addEventListener('focus', () => {
+        if (started) return;
+        started = true;
+        window.dataLayer.push({
+          event: 'form_start',
+          event_location: (form as HTMLElement).dataset.location ?? '',
+        });
+      });
+    });
+  });
+
+  // ── scroll_75 ─────────────────────────────────────────────────────────────
+  let scroll75Fired = false;
+  window.addEventListener(
+    'scroll',
+    () => {
+      if (scroll75Fired) return;
+      const ratio =
+        (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight;
+      if (ratio >= 0.75) {
+        scroll75Fired = true;
+        window.dataLayer.push({ event: 'scroll_75' });
+      }
+    },
+    { passive: true },
+  );
+</script>

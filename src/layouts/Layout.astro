@@ -1,5 +1,8 @@
 ---
 import '../styles/global.css';
+import StructuredData from '../components/StructuredData.astro';
+import Analytics from '../components/Analytics.astro';
+import { GTM_ID } from '../config/company';
 
 interface Props {
   title?: string;
@@ -12,37 +15,6 @@ const {
   description = 'Sacolas personalizadas para lojas, eventos e empresas. Peça seu orçamento com a Chico Sacolas pelo WhatsApp e valorize sua marca com embalagens personalizadas.',
   canonicalUrl,
 } = Astro.props;
-
-const schema = {
-  '@context': 'https://schema.org',
-  '@type': 'LocalBusiness',
-  name: 'Chico Sacolas',
-  description: 'Sacolas personalizadas com serigrafia para lojas, eventos e empresas em Guarujá e Baixada Santista.',
-  telephone: '+55-13-99764-6549',
-  email: 'oi@chicosacolas.com',
-  url: 'https://chicosacolas.com.br',
-  address: {
-    '@type': 'PostalAddress',
-    addressLocality: 'Guarujá',
-    addressRegion: 'SP',
-    addressCountry: 'BR',
-  },
-  areaServed: [
-    { '@type': 'City', name: 'Guarujá' },
-    { '@type': 'City', name: 'Santos' },
-    { '@type': 'AdministrativeArea', name: 'Baixada Santista' },
-  ],
-  hasOfferCatalog: {
-    '@type': 'OfferCatalog',
-    name: 'Sacolas Personalizadas',
-    itemListElement: [
-      { '@type': 'Offer', itemOffered: { '@type': 'Product', name: 'Sacolas kraft personalizadas' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Product', name: 'Ecobags personalizadas' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Product', name: 'Sacolas promocionais com logo' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Product', name: 'Sacolas para eventos' } },
-    ],
-  },
-};
 ---
 <!doctype html>
 <html lang="pt-BR">
@@ -72,13 +44,25 @@ const schema = {
     <meta name="geo.placename" content="Guarujá, São Paulo" />
 
     <title>{title}</title>
-    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+
+    <StructuredData />
+    <Analytics />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Special+Elite&family=DM+Serif+Display:ital@0;1&display=swap" />
   </head>
   <body>
+    <!-- GTM noscript fallback -->
+    <noscript>
+      <iframe
+        src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
+        height="0"
+        width="0"
+        style="display:none;visibility:hidden"
+      ></iframe>
+    </noscript>
+
     <slot />
   </body>
 </html>

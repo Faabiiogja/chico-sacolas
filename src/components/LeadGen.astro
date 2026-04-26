@@ -8,7 +8,14 @@ import { WHATSAPP_URL } from '../consts';
     <h2 class="lead-section-heading">Sua ideia, nossa tela.</h2>
     <p class="lead-section-sub">Sem compromisso. Resposta em 24h.</p>
   </div>
-  <form class="lead-form" action={WHATSAPP_URL} method="get" target="_blank">
+  <form
+    class="lead-form"
+    action={WHATSAPP_URL}
+    method="get"
+    target="_blank"
+    data-event="form_submit"
+    data-location="lead_form"
+  >
     <div class="lead-field">
       <label for="lead-nome">Seu nome</label>
       <input id="lead-nome" type="text" placeholder="Maria Silva" />
