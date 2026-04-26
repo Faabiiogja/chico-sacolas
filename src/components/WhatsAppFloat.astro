@@ -2,7 +2,15 @@
 import { WHATSAPP_URL } from '../consts';
 ---
 
-<a class="whatsapp-float" href={WHATSAPP_URL} target="_blank" rel="noopener" aria-label="Chamar no WhatsApp">
+<a
+  class="whatsapp-float"
+  href={WHATSAPP_URL}
+  target="_blank"
+  rel="noopener"
+  aria-label="Chamar no WhatsApp"
+  data-event="click_whatsapp"
+  data-location="floating_button"
+>
   <span class="whatsapp-label">Chamar no WhatsApp</span>
   <div class="whatsapp-btn">
     <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">

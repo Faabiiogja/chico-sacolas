@@ -20,12 +20,25 @@ import { WHATSAPP_URL } from '../consts';
       </div>
       <div class="contact-info-row">
         <div class="contact-info-icon" aria-hidden="true">📞</div>
-        <span class="contact-info-text">+55 13 9 9764-6549</span>
+        <a
+          class="contact-info-text"
+          href="tel:+5513997646549"
+          data-event="click_phone"
+          data-location="contact"
+        >+55 13 9 9764-6549</a>
       </div>
     </div>
   </div>
 
-  <form class="contact-form" action={WHATSAPP_URL} method="get" target="_blank" style="border:2px solid var(--light);">
+  <form
+    class="contact-form"
+    action={WHATSAPP_URL}
+    method="get"
+    target="_blank"
+    style="border:2px solid var(--light);"
+    data-event="form_submit"
+    data-location="contact_form"
+  >
     <div class="form-row">
       <div class="form-field">
         <label class="form-label" for="c-nome">Nome completo</label>
@@ -61,7 +74,12 @@ import { WHATSAPP_URL } from '../consts';
       <textarea class="form-textarea" id="c-projeto" placeholder="Descreva sua ideia, prazo, referências..."></textarea>
     </div>
     <div class="form-submit-row">
-      <button type="submit" class="btn btn-primary">Enviar mensagem →</button>
+      <button
+        type="submit"
+        class="btn btn-primary"
+        data-event="click_whatsapp"
+        data-location="final_cta"
+      >Enviar mensagem →</button>
       <p class="form-note">Respondemos em até 48h<br>em dias úteis.</p>
     </div>
   </form>

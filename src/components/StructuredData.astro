@@ -1,0 +1,90 @@
+---
+import { COMPANY, FAQ, SERVICES } from '../config/company';
+
+const localBusiness = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  name: COMPANY.name,
+  description: COMPANY.description,
+  telephone: COMPANY.telephone,
+  email: COMPANY.email,
+  url: COMPANY.url,
+  logo: COMPANY.logo,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: COMPANY.address.streetAddress,
+    addressLocality: COMPANY.address.addressLocality,
+    addressRegion: COMPANY.address.addressRegion,
+    postalCode: COMPANY.address.postalCode,
+    addressCountry: COMPANY.address.addressCountry,
+  },
+  areaServed: COMPANY.areaServed.map((name) => ({
+    '@type': 'City',
+    name,
+  })),
+  sameAs: COMPANY.sameAs,
+};
+
+const organization = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: COMPANY.name,
+  url: COMPANY.url,
+  logo: COMPANY.logo,
+  email: COMPANY.email,
+  telephone: COMPANY.telephone,
+  address: localBusiness.address,
+  sameAs: COMPANY.sameAs,
+  contactPoint: {
+    '@type': 'ContactPoint',
+    telephone: COMPANY.telephone,
+    contactType: 'customer service',
+    areaServed: 'BR',
+    availableLanguage: 'Portuguese',
+  },
+};
+
+const service = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Sacolas Personalizadas com Serigrafia',
+  provider: {
+    '@type': 'LocalBusiness',
+    name: COMPANY.name,
+    url: COMPANY.url,
+  },
+  description: COMPANY.description,
+  areaServed: COMPANY.areaServed,
+  serviceType: 'Serigrafia em Sacolas Personalizadas',
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Sacolas Personalizadas',
+    itemListElement: SERVICES.map(({ name, description }) => ({
+      '@type': 'Offer',
+      itemOffered: {
+        '@type': 'Product',
+        name,
+        description,
+      },
+    })),
+  },
+};
+
+const faqPage = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: FAQ.map(({ question, answer }) => ({
+    '@type': 'Question',
+    name: question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: answer,
+    },
+  })),
+};
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(localBusiness)} />
+<script type="application/ld+json" set:html={JSON.stringify(organization)} />
+<script type="application/ld+json" set:html={JSON.stringify(service)} />
+<script type="application/ld+json" set:html={JSON.stringify(faqPage)} />
