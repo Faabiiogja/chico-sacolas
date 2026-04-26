@@ -1,0 +1,143 @@
+---
+import { WHATSAPP_URL } from '../consts';
+---
+
+<section class="lead-section" id="orcamento">
+  <div class="lead-section-left">
+    <p class="eyebrow light" style="margin-bottom:10px;">Orçamento gratuito</p>
+    <h2 class="lead-section-heading">Sua ideia, nossa tela.</h2>
+    <p class="lead-section-sub">Sem compromisso. Resposta em 24h.</p>
+  </div>
+  <form class="lead-form" action={WHATSAPP_URL} method="get" target="_blank">
+    <div class="lead-field">
+      <label for="lead-nome">Seu nome</label>
+      <input id="lead-nome" type="text" placeholder="Maria Silva" />
+    </div>
+    <div class="lead-field">
+      <label for="lead-email">E-mail</label>
+      <input id="lead-email" type="email" placeholder="voce@empresa.com" />
+    </div>
+    <div class="lead-field">
+      <label for="lead-tipo">Tipo de sacola</label>
+      <select id="lead-tipo">
+        <option disabled selected>Escolha...</option>
+        <option>Sacola de papel</option>
+        <option>Sacola de tecido</option>
+        <option>Ecobag</option>
+        <option>Formato personalizado</option>
+      </select>
+    </div>
+    <button type="submit" class="btn-lead-submit">Pedir orçamento →</button>
+  </form>
+</section>
+
+<style>
+.lead-section {
+  background: var(--orange);
+  padding: 56px 64px;
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  border-top: 3px solid var(--ink);
+  border-bottom: 3px solid var(--ink);
+  position: relative;
+  overflow: hidden;
+}
+.lead-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(0,0,0,.08) 1px, transparent 1px);
+  background-size: 16px 16px;
+  pointer-events: none;
+}
+.lead-section-left {
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+.lead-section-heading {
+  font-family: 'Special Elite', monospace;
+  font-weight: 400;
+  letter-spacing: .04em;
+  line-height: 1.1;
+  font-size: 44px;
+  color: #fff;
+  max-width: 280px;
+}
+.lead-section-sub {
+  font-size: 18px;
+  color: rgba(255,255,255,.75);
+  margin-top: 8px;
+}
+.lead-form {
+  display: flex;
+  gap: 12px;
+  flex: 1;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  position: relative;
+  z-index: 1;
+}
+.lead-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+  min-width: 160px;
+}
+.lead-field label {
+  font-family: 'Special Elite', monospace;
+  font-size: 10px;
+  letter-spacing: .18em;
+  color: rgba(255,255,255,.65);
+}
+.lead-field input,
+.lead-field select {
+  background: rgba(0,0,0,.2);
+  border: 2px solid rgba(255,255,255,.4);
+  padding: 13px 16px;
+  font-family: 'Caveat', cursive;
+  font-size: 18px;
+  color: #fff;
+  outline: none;
+  transition: border-color .2s;
+  appearance: none;
+  border-radius: 0;
+}
+.lead-field input::placeholder { color: rgba(255,255,255,.4); }
+.lead-field input:focus,
+.lead-field select:focus { border-color: #fff; }
+.lead-field select option { color: var(--ink); background: var(--paper); }
+.btn-lead-submit {
+  background: var(--ink);
+  color: var(--paper);
+  font-family: 'Special Elite', monospace;
+  font-size: 14px;
+  letter-spacing: .14em;
+  padding: 15px 32px;
+  border: 2.5px solid var(--ink);
+  cursor: pointer;
+  white-space: nowrap;
+  box-shadow: 4px 4px 0 rgba(0,0,0,.3);
+  transition: transform .12s, box-shadow .12s;
+  align-self: flex-end;
+  flex-shrink: 0;
+}
+.btn-lead-submit:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 rgba(0,0,0,.3); }
+
+@media (max-width: 639px) {
+  .lead-section { flex-direction: column; padding: 40px 24px; gap: 28px; align-items: stretch; }
+  .lead-section-heading { font-size: 28px; max-width: 100%; }
+  .lead-form { flex-direction: column; gap: 12px; }
+  .lead-field { min-width: 100%; }
+  .btn-lead-submit { width: 100%; }
+}
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  .lead-section { padding: 44px 36px; gap: 32px; flex-wrap: wrap; }
+  .lead-section-heading { font-size: 34px; }
+  .lead-form { flex-wrap: wrap; }
+  .lead-field { min-width: 140px; }
+}
+</style>

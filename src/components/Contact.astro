@@ -1,0 +1,212 @@
+---
+import { WHATSAPP_URL } from '../consts';
+---
+
+<section class="contact" id="contato">
+  <div class="contact-left">
+    <div>
+      <p class="eyebrow orange" style="margin-bottom:12px;">Fale com a gente</p>
+      <h2 class="contact-h">Pronto para fazer sua <em>sacola?</em></h2>
+    </div>
+    <p class="contact-p">Conta seu projeto pra gente. Respondemos com orçamento, prazo e uma sugestão de material — tudo sem compromisso.</p>
+    <div class="contact-info">
+      <div class="contact-info-row">
+        <div class="contact-info-icon" aria-hidden="true">📍</div>
+        <span class="contact-info-text">Guarujá - São Paulo, Brasil</span>
+      </div>
+      <div class="contact-info-row">
+        <div class="contact-info-icon" aria-hidden="true">✉</div>
+        <span class="contact-info-text">oi@chicosacolas.com</span>
+      </div>
+      <div class="contact-info-row">
+        <div class="contact-info-icon" aria-hidden="true">📞</div>
+        <span class="contact-info-text">+55 13 9 9764-6549</span>
+      </div>
+    </div>
+  </div>
+
+  <form class="contact-form" action={WHATSAPP_URL} method="get" target="_blank" style="border:2px solid var(--light);">
+    <div class="form-row">
+      <div class="form-field">
+        <label class="form-label" for="c-nome">Nome completo</label>
+        <input class="form-input" id="c-nome" type="text" placeholder="João Silva" />
+      </div>
+      <div class="form-field">
+        <label class="form-label" for="c-empresa">Empresa</label>
+        <input class="form-input" id="c-empresa" type="text" placeholder="Sua empresa" />
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-field">
+        <label class="form-label" for="c-email">E-mail</label>
+        <input class="form-input" id="c-email" type="email" placeholder="voce@empresa.com" />
+      </div>
+      <div class="form-field">
+        <label class="form-label" for="c-whatsapp">WhatsApp</label>
+        <input class="form-input" id="c-whatsapp" type="tel" placeholder="+55 13 90000-0000" />
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-field">
+        <label class="form-label" for="c-tipo">Tipo de sacola</label>
+        <input class="form-input" id="c-tipo" type="text" placeholder="Ecobag, papel, tecido..." />
+      </div>
+      <div class="form-field">
+        <label class="form-label" for="c-qtd">Quantidade estimada</label>
+        <input class="form-input" id="c-qtd" type="text" placeholder="Ex: 500 unidades" />
+      </div>
+    </div>
+    <div class="form-field full" style="border-bottom:2px solid var(--light); border-right:2px solid var(--light);">
+      <label class="form-label" for="c-projeto">Conte seu projeto</label>
+      <textarea class="form-textarea" id="c-projeto" placeholder="Descreva sua ideia, prazo, referências..."></textarea>
+    </div>
+    <div class="form-submit-row">
+      <button type="submit" class="btn btn-primary">Enviar mensagem →</button>
+      <p class="form-note">Respondemos em até 48h<br>em dias úteis.</p>
+    </div>
+  </form>
+</section>
+
+<style>
+.contact {
+  background: var(--paper);
+  padding: 100px 64px;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 80px;
+  align-items: start;
+  border-top: 2px solid var(--light);
+}
+.contact-left {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  position: sticky;
+  top: 80px;
+}
+.contact-h {
+  font-family: 'Special Elite', monospace;
+  font-weight: 400;
+  letter-spacing: .04em;
+  line-height: 1.1;
+  font-size: 48px;
+}
+.contact-h em { font-style: normal; color: var(--orange); }
+.contact-p {
+  font-size: 20px;
+  color: var(--mid);
+  line-height: 1.5;
+}
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 8px;
+}
+.contact-info-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 18px;
+}
+.contact-info-icon {
+  width: 36px;
+  height: 36px;
+  border: 2px solid var(--light);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 15px;
+  flex-shrink: 0;
+}
+.contact-info-text { color: var(--mid); }
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-bottom: 2px solid var(--light);
+  border-right: 2px solid var(--light);
+  padding: 20px 24px;
+  transition: background .2s, border-color .2s;
+}
+.form-field:focus-within {
+  background: var(--warm-white);
+  border-color: var(--orange);
+}
+.form-field.full { grid-column: 1 / -1; border-right: none; }
+.form-field:last-of-type { border-bottom: none; }
+.form-field:nth-child(even) { border-right: none; }
+.form-label {
+  font-family: 'Special Elite', monospace;
+  font-size: 9px;
+  letter-spacing: .2em;
+  color: var(--mid);
+  margin-bottom: 4px;
+  text-transform: uppercase;
+}
+.form-input {
+  background: transparent;
+  border: none;
+  font-family: 'Caveat', cursive;
+  font-size: 20px;
+  color: var(--ink);
+  outline: none;
+  width: 100%;
+}
+.form-input::placeholder { color: var(--light); }
+.form-textarea {
+  background: transparent;
+  border: none;
+  font-family: 'Caveat', cursive;
+  font-size: 20px;
+  color: var(--ink);
+  outline: none;
+  width: 100%;
+  min-height: 100px;
+  resize: none;
+}
+.form-textarea::placeholder { color: var(--light); }
+.form-submit-row {
+  margin-top: 32px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.form-note {
+  font-family: 'Special Elite', monospace;
+  font-size: 10px;
+  letter-spacing: .12em;
+  color: var(--mid);
+  line-height: 1.6;
+}
+
+@media (max-width: 639px) {
+  .contact { grid-template-columns: 1fr; gap: 40px; padding: 60px 24px; }
+  .contact-left { position: static; }
+  .contact-h { font-size: 32px; }
+  .form-row { grid-template-columns: 1fr; }
+  .form-field { border-right: none !important; }
+  .form-submit-row { flex-direction: column; align-items: flex-start; gap: 12px; }
+}
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  .contact { grid-template-columns: 1fr; gap: 48px; padding: 72px 36px; }
+  .contact-left { position: static; }
+  .contact-h { font-size: 38px; }
+  .form-row { grid-template-columns: 1fr 1fr; }
+}
+
+@media (min-width: 1280px) {
+  .contact-h { font-size: 54px; }
+}
+</style>

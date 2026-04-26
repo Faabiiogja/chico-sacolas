@@ -1,22 +1,31 @@
 ---
 import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Chico Sacolas | Sacolas Personalizadas para Lojas e Empresas',
+  description = 'Sacolas personalizadas para lojas, eventos e empresas. Peça seu orçamento com a Chico Sacolas pelo WhatsApp e valorize sua marca com embalagens personalizadas.',
+} = Astro.props;
 ---
 <!doctype html>
 <html lang="pt-BR">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<meta name="description" content="Sacolas personalizadas para lojas, eventos e empresas. Peça seu orçamento com a Chico Sacolas pelo WhatsApp e valorize sua marca com embalagens personalizadas." />
-		<title>Chico Sacolas | Sacolas Personalizadas para Lojas e Empresas</title>
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Special+Elite&family=DM+Serif+Display:ital@0;1&display=swap" />
-	</head>
-	<body class="type-industrial">
-		<slot />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Special+Elite&family=DM+Serif+Display:ital@0;1&display=swap" />
+  </head>
+  <body>
+    <slot />
+  </body>
 </html>
-
