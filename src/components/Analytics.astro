@@ -2,7 +2,11 @@
 import { GTM_ID, GA4_ID } from '../config/company';
 ---
 
-{/* GA4 — gtag.js direto */}
+{/*
+  GA4 direto — mantido enquanto as tags de GA4 não estiverem configuradas no GTM.
+  Após configurar a tag "GA4 Configuration" no GTM, remova este bloco para
+  evitar pageview duplicado (gtag + GTM disparando ao mesmo tempo).
+*/}
 <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA4_ID}`}></script>
 <script define:vars={{ GA4_ID }}>
   window.dataLayer = window.dataLayer || [];
