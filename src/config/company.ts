@@ -26,7 +26,7 @@ export const COMPANY = {
 // ─── IDs DE ANALYTICS ────────────────────────────────────────────────────────
 // Substitua os valores abaixo pelos IDs reais das suas contas.
 
-export const GTM_ID = 'INSERIR_GTM_ID';          // ex: "GTM-XXXXXXX"
+export const GTM_ID = 'GTM-TDXJ5RMG';
 export const GA4_ID = 'G-YEL1GTK1ZT';            // ex: "G-XXXXXXXXXX" (se não usar GTM)
 export const META_PIXEL_ID = 'INSERIR_PIXEL_ID'; // ex: "1234567890"   (se não usar GTM)
 
