@@ -5,22 +5,22 @@
 export const COMPANY = {
   name: 'Chico Sacolas',
   description: 'Sacolas personalizadas para lojas, eventos e empresas.',
-  telephone: 'INSERIR_TELEFONE',          // ex: "+55-13-99764-6549"
+  telephone: '+5513997646549',          // ex: "+55-13-99764-6549"
   email: 'oi@chicosacolas.com',
-  url: 'INSERIR_URL',                     // ex: "https://chicosacolas.com.br"
+  url: 'https://sacolas-gois.com.br',
   address: {
-    streetAddress: 'INSERIR_ENDERECO_SE_HOUVER',
+    streetAddress: 'Rua Projetada C, 24',
     addressLocality: 'Guarujá',
     addressRegion: 'SP',
-    postalCode: 'INSERIR_CEP_SE_HOUVER',
+    postalCode: '11460-540',
     addressCountry: 'BR',
   },
   areaServed: ['Guarujá', 'Santos', 'Baixada Santista'],
   sameAs: [
-    'INSERIR_URL_INSTAGRAM',
-    'INSERIR_URL_WHATSAPP',
+    'https://www.facebook.com/chicosacolas',
+    'https://wa.me/5513997646549?text=Ol%C3%A1%2C%20gostaria%20de%20um%20or%C3%A7amento%20de%20sacolas%20personalizadas!',
   ],
-  logo: 'INSERIR_URL/logo.png',
+  logo: 'https://sacolas-gois.com.br/images/logo-chico-sacolas.png',
 } as const;
 
 // ─── IDs DE ANALYTICS ────────────────────────────────────────────────────────
