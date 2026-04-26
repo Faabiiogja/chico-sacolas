@@ -2,18 +2,20 @@
 import '../styles/global.css';
 import StructuredData from '../components/StructuredData.astro';
 import Analytics from '../components/Analytics.astro';
-import { GTM_ID } from '../config/company';
+import { GTM_ID, COMPANY } from '../config/company';
 
 interface Props {
   title?: string;
   description?: string;
   canonicalUrl?: string;
+  ogImage?: string;
 }
 
 const {
   title = 'Chico Sacolas | Sacolas Personalizadas para Lojas e Empresas',
   description = 'Sacolas personalizadas para lojas, eventos e empresas. Peça seu orçamento com a Chico Sacolas pelo WhatsApp e valorize sua marca com embalagens personalizadas.',
   canonicalUrl,
+  ogImage = `${COMPANY.url}/images/hero-sacola.png`,
 } = Astro.props;
 ---
 <!doctype html>
@@ -33,11 +35,16 @@ const {
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:site_name" content="Chico Sacolas" />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1024" />
+    <meta property="og:image:height" content="1024" />
+    <meta property="og:image:alt" content="Sacola personalizada com serigrafia — Chico Sacolas" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
 
     <!-- Geo -->
     <meta name="geo.region" content="BR-SP" />
