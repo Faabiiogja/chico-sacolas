@@ -1,6 +1,15 @@
 ---
-import { GTM_ID } from '../config/company';
+import { GTM_ID, GA4_ID } from '../config/company';
 ---
+
+{/* GA4 — gtag.js direto */}
+<script async src={`https://www.googletagmanager.com/gtag/js?id=${GA4_ID}`}></script>
+<script define:vars={{ GA4_ID }}>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  gtag('js', new Date());
+  gtag('config', GA4_ID);
+</script>
 
 {/* GTM — substitua GTM_ID em src/config/company.ts */}
 <script define:vars={{ GTM_ID }}>

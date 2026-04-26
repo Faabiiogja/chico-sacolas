@@ -27,7 +27,7 @@ export const COMPANY = {
 // Substitua os valores abaixo pelos IDs reais das suas contas.
 
 export const GTM_ID = 'INSERIR_GTM_ID';          // ex: "GTM-XXXXXXX"
-export const GA4_ID = 'INSERIR_GA4_ID';          // ex: "G-XXXXXXXXXX" (se não usar GTM)
+export const GA4_ID = 'G-YEL1GTK1ZT';            // ex: "G-XXXXXXXXXX" (se não usar GTM)
 export const META_PIXEL_ID = 'INSERIR_PIXEL_ID'; // ex: "1234567890"   (se não usar GTM)
 
 // ─── FAQ ─────────────────────────────────────────────────────────────────────
