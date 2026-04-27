@@ -70,6 +70,13 @@ const service = {
   },
 };
 
+const webSite = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  name: COMPANY.name,
+  url: COMPANY.url,
+};
+
 const faqPage = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
@@ -84,6 +91,7 @@ const faqPage = {
 };
 ---
 
+<script type="application/ld+json" set:html={JSON.stringify(webSite)} />
 <script type="application/ld+json" set:html={JSON.stringify(localBusiness)} />
 <script type="application/ld+json" set:html={JSON.stringify(organization)} />
 <script type="application/ld+json" set:html={JSON.stringify(service)} />
