@@ -3,6 +3,6 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://sacolas-gois.com.br',
+  site: 'https://chicosacolas.com.br',
   integrations: [sitemap()],
 });
