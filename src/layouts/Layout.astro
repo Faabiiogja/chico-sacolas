@@ -14,7 +14,7 @@ interface Props {
 const {
   title = 'Chico Sacolas | Sacolas Personalizadas para Lojas e Empresas',
   description = 'Sacolas personalizadas para lojas, eventos e empresas. Peça seu orçamento com a Chico Sacolas pelo WhatsApp e valorize sua marca com embalagens personalizadas.',
-  canonicalUrl,
+  canonicalUrl = COMPANY.url,
   ogImage = `${COMPANY.url}/images/hero-sacola.png`,
 } = Astro.props;
 ---
@@ -28,11 +28,12 @@ const {
     <link rel="sitemap" href="/sitemap-index.xml" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={description} />
-    {canonicalUrl && <link rel="canonical" href={canonicalUrl} />}
+    <link rel="canonical" href={canonicalUrl} />
 
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="pt_BR" />
+    <meta property="og:url" content={canonicalUrl} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:site_name" content="Chico Sacolas" />

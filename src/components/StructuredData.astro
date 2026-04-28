@@ -1,5 +1,5 @@
 ---
-import { COMPANY, FAQ, SERVICES } from '../config/company';
+import { COMPANY, SERVICES } from '../config/company';
 
 const localBusiness = {
   '@context': 'https://schema.org',
@@ -77,22 +77,9 @@ const webSite = {
   url: COMPANY.url,
 };
 
-const faqPage = {
-  '@context': 'https://schema.org',
-  '@type': 'FAQPage',
-  mainEntity: FAQ.map(({ question, answer }) => ({
-    '@type': 'Question',
-    name: question,
-    acceptedAnswer: {
-      '@type': 'Answer',
-      text: answer,
-    },
-  })),
-};
 ---
 
 <script type="application/ld+json" set:html={JSON.stringify(webSite)} />
 <script type="application/ld+json" set:html={JSON.stringify(localBusiness)} />
 <script type="application/ld+json" set:html={JSON.stringify(organization)} />
 <script type="application/ld+json" set:html={JSON.stringify(service)} />
-<script type="application/ld+json" set:html={JSON.stringify(faqPage)} />

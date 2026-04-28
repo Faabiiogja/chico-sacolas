@@ -1,5 +1,4 @@
 ---
-import { WHATSAPP_URL } from '../consts';
 ---
 
 <section class="contact" id="contato">
@@ -16,7 +15,7 @@ import { WHATSAPP_URL } from '../consts';
       </div>
       <div class="contact-info-row">
         <div class="contact-info-icon" aria-hidden="true">✉</div>
-        <span class="contact-info-text">oi@chicosacolas.com</span>
+        <span class="contact-info-text">contato@chicosacolas.com.br</span>
       </div>
       <div class="contact-info-row">
         <div class="contact-info-icon" aria-hidden="true">📞</div>
@@ -31,58 +30,90 @@ import { WHATSAPP_URL } from '../consts';
   </div>
 
   <form
+    id="contact-form"
     class="contact-form"
-    action={WHATSAPP_URL}
-    method="get"
-    target="_blank"
+    action="/api/orcamento"
+    method="post"
     style="border:2px solid var(--light);"
     data-event="form_submit"
     data-location="contact_form"
   >
+    <input type="hidden" name="_source" value="Formulário de Contato" />
     <div class="form-row">
       <div class="form-field">
         <label class="form-label" for="c-nome">Nome completo</label>
-        <input class="form-input" id="c-nome" type="text" placeholder="João Silva" />
+        <input class="form-input" id="c-nome" name="nome" type="text" placeholder="João Silva" required />
       </div>
       <div class="form-field">
         <label class="form-label" for="c-empresa">Empresa</label>
-        <input class="form-input" id="c-empresa" type="text" placeholder="Sua empresa" />
+        <input class="form-input" id="c-empresa" name="empresa" type="text" placeholder="Sua empresa" />
       </div>
     </div>
     <div class="form-row">
       <div class="form-field">
         <label class="form-label" for="c-email">E-mail</label>
-        <input class="form-input" id="c-email" type="email" placeholder="voce@empresa.com" />
+        <input class="form-input" id="c-email" name="email" type="email" placeholder="voce@empresa.com" required />
       </div>
       <div class="form-field">
         <label class="form-label" for="c-whatsapp">WhatsApp</label>
-        <input class="form-input" id="c-whatsapp" type="tel" placeholder="+55 13 90000-0000" />
+        <input class="form-input" id="c-whatsapp" name="whatsapp" type="tel" placeholder="+55 13 90000-0000" />
       </div>
     </div>
     <div class="form-row">
       <div class="form-field">
         <label class="form-label" for="c-tipo">Tipo de sacola</label>
-        <input class="form-input" id="c-tipo" type="text" placeholder="Ecobag, papel, tecido..." />
+        <input class="form-input" id="c-tipo" name="tipo" type="text" placeholder="Ecobag, papel, tecido..." />
       </div>
       <div class="form-field">
         <label class="form-label" for="c-qtd">Quantidade estimada</label>
-        <input class="form-input" id="c-qtd" type="text" placeholder="Ex: 500 unidades" />
+        <input class="form-input" id="c-qtd" name="quantidade" type="text" placeholder="Ex: 500 unidades" />
       </div>
     </div>
     <div class="form-field full" style="border-bottom:2px solid var(--light); border-right:2px solid var(--light);">
       <label class="form-label" for="c-projeto">Conte seu projeto</label>
-      <textarea class="form-textarea" id="c-projeto" placeholder="Descreva sua ideia, prazo, referências..."></textarea>
+      <textarea class="form-textarea" id="c-projeto" name="projeto" placeholder="Descreva sua ideia, prazo, referências..."></textarea>
     </div>
     <div class="form-submit-row">
       <button
         type="submit"
+        id="contact-btn"
         class="btn btn-primary"
-        data-event="click_whatsapp"
-        data-location="final_cta"
+        data-event="click_contact_submit"
+        data-location="contact_form"
       >Enviar mensagem →</button>
-      <p class="form-note">Respondemos em até 48h<br>em dias úteis.</p>
+      <p class="form-note" id="contact-note">Respondemos em até 48h<br>em dias úteis.</p>
     </div>
   </form>
+
+  <script>
+    const form = document.getElementById('contact-form') as HTMLFormElement;
+    const btn = document.getElementById('contact-btn') as HTMLButtonElement;
+    const note = document.getElementById('contact-note') as HTMLElement;
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      btn.disabled = true;
+      btn.textContent = 'Enviando...';
+
+      try {
+        const res = await fetch('/api/orcamento', { method: 'POST', body: new FormData(form) });
+        const data = await res.json() as { ok: boolean };
+
+        if (data.ok) {
+          form.reset();
+          btn.textContent = 'Mensagem enviada!';
+          note.textContent = 'Em breve entraremos em contato.';
+          window.dataLayer?.push({ event: 'form_submit_success', form_location: 'contact_form' });
+        } else {
+          throw new Error('send_failed');
+        }
+      } catch {
+        btn.disabled = false;
+        btn.textContent = 'Enviar mensagem →';
+        note.innerHTML = 'Erro ao enviar. Tente via<br><a href="https://wa.me/5513997646549" style="color:var(--orange)">WhatsApp</a>.';
+      }
+    });
+  </script>
 </section>
 
 <style>
