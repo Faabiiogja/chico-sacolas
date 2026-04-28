@@ -7,7 +7,7 @@ export const COMPANY = {
   description: 'Sacolas personalizadas para lojas, eventos e empresas.',
   telephone: '+5513997646549',          // ex: "+55-13-99764-6549"
   email: 'oi@chicosacolas.com',
-  url: 'https://sacolas-gois.com.br',
+  url: 'https://chicosacolas.com.br',
   address: {
     streetAddress: 'Rua Projetada C, 24',
     addressLocality: 'Guarujá',
@@ -15,12 +15,12 @@ export const COMPANY = {
     postalCode: '11460-540',
     addressCountry: 'BR',
   },
-  areaServed: ['Guarujá', 'Santos', 'Baixada Santista'],
+  areaServed: ['Guarujá', 'Santos', 'São Vicente', 'Praia Grande', 'Cubatão', 'Bertioga', 'Mongaguá', 'Itanhaém', 'Peruíbe', 'Baixada Santista'],
   sameAs: [
     'https://www.facebook.com/chicosacolas',
     'https://wa.me/5513997646549?text=Ol%C3%A1%2C%20gostaria%20de%20um%20or%C3%A7amento%20de%20sacolas%20personalizadas!',
   ],
-  logo: 'https://sacolas-gois.com.br/images/logo-chico-sacolas.png',
+  logo: 'https://chicosacolas.com.br/images/logo-chico-sacolas.png',
 } as const;
 
 // ─── IDs DE ANALYTICS ────────────────────────────────────────────────────────
@@ -53,7 +53,7 @@ export const FAQ = [
   {
     question: 'Vocês atendem fora do Guarujá?',
     answer:
-      'Sim! Atendemos toda a Baixada Santista — Santos, São Vicente, Cubatão e região — e enviamos para todo o Brasil.',
+      'Sim! Atendemos toda a Baixada Santista — Santos, São Vicente, Praia Grande, Cubatão, Bertioga, Mongaguá, Itanhaém, Peruíbe e região — e enviamos para todo o Brasil.',
   },
   {
     question: 'Como faço para pedir um orçamento de sacolas personalizadas?',
