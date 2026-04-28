@@ -6,7 +6,7 @@ export const COMPANY = {
   name: 'Chico Sacolas',
   description: 'Sacolas personalizadas para lojas, eventos e empresas.',
   telephone: '+5513997646549',          // ex: "+55-13-99764-6549"
-  email: 'oi@chicosacolas.com',
+  email: 'contato@chicosacolas.com.br',
   url: 'https://chicosacolas.com.br',
   address: {
     streetAddress: 'Rua Projetada C, 24',
@@ -27,8 +27,7 @@ export const COMPANY = {
 // Substitua os valores abaixo pelos IDs reais das suas contas.
 
 export const GTM_ID = 'GTM-TDXJ5RMG';
-export const GA4_ID = 'G-YEL1GTK1ZT';            // ex: "G-XXXXXXXXXX" (se não usar GTM)
-export const META_PIXEL_ID = 'INSERIR_PIXEL_ID'; // ex: "1234567890"   (se não usar GTM)
+export const GA4_ID = 'G-YEL1GTK1ZT';
 
 // ─── FAQ ─────────────────────────────────────────────────────────────────────
 // Usado no FAQPage schema. Para gerar rich snippets no Google, o conteúdo
