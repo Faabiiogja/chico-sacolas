@@ -104,6 +104,7 @@
           btn.textContent = 'Mensagem enviada!';
           note.textContent = 'Em breve entraremos em contato.';
           window.dataLayer?.push({ event: 'form_submit_success', form_location: 'contact_form' });
+          window.fbq?.('track', 'Lead', { content_name: 'contact_form' });
         } else {
           throw new Error('send_failed');
         }

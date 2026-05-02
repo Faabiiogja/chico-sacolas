@@ -55,6 +55,7 @@
           btn.textContent = 'Recebido!';
           btn.style.background = 'var(--color-green-dark, #128C4A)';
           window.dataLayer?.push({ event: 'form_submit_success', form_location: 'lead_form' });
+          window.fbq?.('track', 'Lead', { content_name: 'lead_form' });
         } else {
           throw new Error();
         }
