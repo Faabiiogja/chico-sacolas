@@ -41,6 +41,7 @@ import { GTM_ID, META_PIXEL_ID } from '../config/company';
   declare global {
     interface Window {
       dataLayer: Record<string, unknown>[];
+      fbq?: (...args: unknown[]) => void;
     }
   }
 
