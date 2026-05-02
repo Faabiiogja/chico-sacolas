@@ -18,7 +18,7 @@ export const COMPANY = {
   areaServed: ['Guarujá', 'Santos', 'São Vicente', 'Praia Grande', 'Cubatão', 'Bertioga', 'Mongaguá', 'Itanhaém', 'Peruíbe', 'Baixada Santista'],
   sameAs: [
     'https://www.facebook.com/chicosacolas',
-    'https://www.instagram.com/chicogoissacolas',
+    'https://www.instagram.com/oficial.chicosacolas/',
     'https://www.google.com/maps/place/Chico+Sacolas/@-23.9477386,-46.2828105,1089m/data=!3m2!1e3!4b1!4m6!3m5!1s0x94ce01a53b4f8c87:0x4926774ab97ac81d!8m2!3d-23.9477386!4d-46.2828105!16s%2Fg%2F11nhp3nhqw',
   ],
   priceRange: '$$',
