@@ -30,6 +30,7 @@ export const COMPANY = {
 
 export const GTM_ID = 'GTM-TDXJ5RMG';
 export const GA4_ID = 'G-YEL1GTK1ZT';
+export const META_PIXEL_ID = '1285082390379257';
 
 // ─── FAQ ─────────────────────────────────────────────────────────────────────
 // Usado no FAQPage schema. Para gerar rich snippets no Google, o conteúdo
