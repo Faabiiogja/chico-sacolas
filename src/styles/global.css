@@ -105,6 +105,9 @@ a { color: inherit; text-decoration: none; }
 }
 .photo-ph.dark::after { color: rgba(255,255,255,.15); }
 
+/* honeypot anti-spam dos formulários */
+.hp-field { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
 /* scrollbar */
 ::-webkit-scrollbar { width: 5px; }
 ::-webkit-scrollbar-track { background: var(--ink); }
