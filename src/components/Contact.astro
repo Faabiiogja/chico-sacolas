@@ -1,4 +1,10 @@
 ---
+import { COMPANY } from '../config/company';
+
+const { streetAddress, addressLocality, addressRegion, postalCode } = COMPANY.address;
+const hours = COMPANY.openingHours
+  .map(({ label, opens, closes }) => `${label}: ${opens.replace(':00', 'h')} às ${closes.replace(':00', 'h')}`)
+  .join(' · ');
 ---
 
 <section class="contact" id="contato">
@@ -11,11 +17,22 @@
     <div class="contact-info">
       <div class="contact-info-row">
         <div class="contact-info-icon" aria-hidden="true">📍</div>
-        <span class="contact-info-text">Guarujá - São Paulo, Brasil</span>
+        <a
+          class="contact-info-text"
+          href={COMPANY.googleMaps}
+          target="_blank"
+          rel="noopener"
+          data-event="click_map"
+          data-location="contact"
+        >{streetAddress} · {addressLocality} - {addressRegion}, {postalCode}</a>
+      </div>
+      <div class="contact-info-row">
+        <div class="contact-info-icon" aria-hidden="true">🕘</div>
+        <span class="contact-info-text">{hours}</span>
       </div>
       <div class="contact-info-row">
         <div class="contact-info-icon" aria-hidden="true">✉</div>
-        <span class="contact-info-text">contato@chicosacolas.com.br</span>
+        <a class="contact-info-text" href={`mailto:${COMPANY.email}`}>{COMPANY.email}</a>
       </div>
       <div class="contact-info-row">
         <div class="contact-info-icon" aria-hidden="true">📞</div>
@@ -207,7 +224,7 @@
 .form-input {
   background: transparent;
   border: none;
-  font-family: 'Caveat', cursive;
+  font-family: 'Caveat Variable', cursive;
   font-size: 20px;
   color: var(--ink);
   outline: none;
@@ -217,7 +234,7 @@
 .form-textarea {
   background: transparent;
   border: none;
-  font-family: 'Caveat', cursive;
+  font-family: 'Caveat Variable', cursive;
   font-size: 20px;
   color: var(--ink);
   outline: none;

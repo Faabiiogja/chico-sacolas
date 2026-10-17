@@ -1,5 +1,6 @@
 ---
 import { WHATSAPP_URL } from '../consts';
+import { COMPANY } from '../config/company';
 ---
 
 <footer>
@@ -13,21 +14,22 @@ import { WHATSAPP_URL } from '../consts';
     </div>
     <div>
       <div class="footer-col-title">Empresa</div>
-      <a class="footer-link" href="#">Sobre nós</a>
       <a class="footer-link" href="#processo">Nosso processo</a>
       <a class="footer-link" href="#galeria">Portfolio</a>
+      <a class="footer-link" href="#faq">Dúvidas frequentes</a>
+      <a class="footer-link" href="#contato">Contato</a>
     </div>
     <div>
       <div class="footer-col-title">Produtos</div>
-      <a class="footer-link" href="#">Ecobags</a>
-      <a class="footer-link" href="#">Sacolas de papel</a>
-      <a class="footer-link" href="#">Formatos especiais</a>
+      <a class="footer-link" href="#produtos">Sacolas kraft</a>
+      <a class="footer-link" href="#produtos">Ecobags</a>
+      <a class="footer-link" href="#produtos">Sacolas para eventos</a>
     </div>
     <div>
       <div class="footer-col-title">Social</div>
-      <a class="footer-link" href="#" target="_blank" rel="noopener">Instagram</a>
-      <a class="footer-link" href={WHATSAPP_URL} target="_blank" rel="noopener">WhatsApp</a>
-      <a class="footer-link" href="#" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="footer-link" href={COMPANY.instagram} target="_blank" rel="noopener" data-event="click_social" data-location="footer" data-label="instagram">Instagram</a>
+      <a class="footer-link" href={COMPANY.facebook} target="_blank" rel="noopener" data-event="click_social" data-location="footer" data-label="facebook">Facebook</a>
+      <a class="footer-link" href={WHATSAPP_URL} target="_blank" rel="noopener" data-event="click_whatsapp" data-location="footer">WhatsApp</a>
     </div>
   </div>
   <div class="footer-bottom">

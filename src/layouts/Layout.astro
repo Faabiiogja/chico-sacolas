@@ -15,10 +15,10 @@ interface Props {
 }
 
 const {
-  title = 'Chico Sacolas | Sacolas Personalizadas para Lojas e Empresas',
-  description = 'Sacolas personalizadas para lojas, eventos e empresas. Peça seu orçamento com a Chico Sacolas pelo WhatsApp e valorize sua marca com embalagens personalizadas.',
-  canonicalUrl = COMPANY.url,
-  ogImage = `${COMPANY.url}/images/hero-sacola.png`,
+  title = 'Sacolas Personalizadas em Guarujá e Santos | Chico Sacolas',
+  description = 'Sacolas kraft, ecobags e sacolas para eventos com a sua logo, em serigrafia. Atendemos Guarujá, Santos e Baixada Santista. Orçamento grátis pelo WhatsApp.',
+  canonicalUrl = `${COMPANY.url}/`,
+  ogImage = COMPANY.image,
   heroImageUrl,
 } = Astro.props;
 ---
@@ -43,9 +43,9 @@ const {
     <meta property="og:description" content={description} />
     <meta property="og:site_name" content="Chico Sacolas" />
     <meta property="og:image" content={ogImage} />
-    <meta property="og:image:width" content="1024" />
-    <meta property="og:image:height" content="1024" />
-    <meta property="og:image:alt" content="Sacola personalizada com serigrafia — Chico Sacolas" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Ecobag personalizada com logo em serigrafia, feita pela Chico Sacolas" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />

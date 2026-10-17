@@ -1,0 +1,101 @@
+---
+import { FAQ } from '../config/company';
+---
+
+<section class="faq" id="faq">
+  <div class="faq-header">
+    <p class="eyebrow orange" style="margin-bottom:10px;">Dúvidas frequentes</p>
+    <h2 class="faq-title">Perguntas sobre <em>sacolas personalizadas</em></h2>
+  </div>
+
+  <div class="faq-list">
+    {FAQ.map(({ question, answer }, i) => (
+      <details class="faq-item" open={i === 0}>
+        <summary class="faq-q">
+          <h3>{question}</h3>
+          <span class="faq-icon" aria-hidden="true">+</span>
+        </summary>
+        <p class="faq-a">{answer}</p>
+      </details>
+    ))}
+  </div>
+</section>
+
+<style>
+.faq {
+  background: var(--warm-white);
+  padding: 100px 64px;
+}
+.faq-header {
+  margin-bottom: 48px;
+}
+.faq-title {
+  font-family: 'Special Elite', monospace;
+  font-weight: 400;
+  letter-spacing: .04em;
+  line-height: 1.1;
+  font-size: 52px;
+  max-width: 720px;
+}
+.faq-title em {
+  font-style: normal;
+  color: var(--orange);
+}
+.faq-list {
+  border: 2px solid var(--ink);
+  max-width: 960px;
+}
+.faq-item {
+  border-bottom: 2px solid var(--ink);
+}
+.faq-item:last-child { border-bottom: none; }
+.faq-q {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 24px 32px;
+  cursor: pointer;
+  list-style: none;
+  transition: background .2s;
+}
+.faq-q::-webkit-details-marker { display: none; }
+.faq-q:hover { background: var(--paper); }
+.faq-q h3 {
+  font-family: 'Special Elite', monospace;
+  font-weight: 400;
+  letter-spacing: .03em;
+  line-height: 1.25;
+  font-size: 21px;
+}
+.faq-icon {
+  font-family: 'Special Elite', monospace;
+  font-size: 28px;
+  line-height: 1;
+  color: var(--orange-dark);
+  flex-shrink: 0;
+  transition: transform .2s;
+}
+.faq-item[open] .faq-icon { transform: rotate(45deg); }
+.faq-a {
+  padding: 0 32px 28px;
+  font-size: 20px;
+  color: var(--mid);
+  line-height: 1.5;
+  max-width: 760px;
+}
+
+@media (max-width: 639px) {
+  .faq { padding: 60px 24px; }
+  .faq-header { margin-bottom: 32px; }
+  .faq-title { font-size: 28px; }
+  .faq-q { padding: 20px; }
+  .faq-q h3 { font-size: 17px; }
+  .faq-a { padding: 0 20px 22px; font-size: 18px; }
+}
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  .faq { padding: 72px 36px; }
+  .faq-title { font-size: 36px; }
+}
+</style>

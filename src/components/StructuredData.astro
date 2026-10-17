@@ -1,15 +1,19 @@
 ---
-import { COMPANY } from '../config/company';
+import { COMPANY, SAME_AS, FAQ, SERVICES } from '../config/company';
+
+const siteUrl = `${COMPANY.url}/`;
+const businessId = `${siteUrl}#business`;
 
 const localBusiness = {
-  '@context': 'https://schema.org',
-  '@type': 'LocalBusiness',
+  '@type': ['LocalBusiness', 'Organization'],
+  '@id': businessId,
   name: COMPANY.name,
   description: COMPANY.description,
   telephone: COMPANY.telephone,
   email: COMPANY.email,
-  url: COMPANY.url,
+  url: siteUrl,
   logo: COMPANY.logo,
+  image: COMPANY.image,
   address: {
     '@type': 'PostalAddress',
     streetAddress: COMPANY.address.streetAddress,
@@ -18,38 +22,21 @@ const localBusiness = {
     postalCode: COMPANY.address.postalCode,
     addressCountry: COMPANY.address.addressCountry,
   },
-  areaServed: COMPANY.areaServed.map((name) => ({
-    '@type': 'City',
-    name,
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: COMPANY.geo.latitude,
+    longitude: COMPANY.geo.longitude,
+  },
+  hasMap: COMPANY.googleMaps,
+  areaServed: COMPANY.areaServed.map((name) => ({ '@type': 'City', name })),
+  openingHoursSpecification: COMPANY.openingHours.map(({ days, opens, closes }) => ({
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek: days,
+    opens,
+    closes,
   })),
-  openingHoursSpecification: [
-    {
-      '@type': 'OpeningHoursSpecification',
-      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
-      opens: '09:00',
-      closes: '18:00',
-    },
-    {
-      '@type': 'OpeningHoursSpecification',
-      dayOfWeek: 'Saturday',
-      opens: '09:00',
-      closes: '15:00',
-    },
-  ],
   priceRange: COMPANY.priceRange,
-  sameAs: COMPANY.sameAs,
-};
-
-const organization = {
-  '@context': 'https://schema.org',
-  '@type': 'Organization',
-  name: COMPANY.name,
-  url: COMPANY.url,
-  logo: COMPANY.logo,
-  email: COMPANY.email,
-  telephone: COMPANY.telephone,
-  address: localBusiness.address,
-  sameAs: COMPANY.sameAs,
+  sameAs: SAME_AS,
   contactPoint: {
     '@type': 'ContactPoint',
     telephone: COMPANY.telephone,
@@ -57,32 +44,39 @@ const organization = {
     areaServed: 'BR',
     availableLanguage: 'Portuguese',
   },
-};
-
-const service = {
-  '@context': 'https://schema.org',
-  '@type': 'Service',
-  name: 'Sacolas Personalizadas com Serigrafia',
-  provider: {
-    '@type': 'LocalBusiness',
-    name: COMPANY.name,
-    url: COMPANY.url,
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Sacolas personalizadas',
+    itemListElement: SERVICES.map(({ name, description }) => ({
+      '@type': 'Offer',
+      itemOffered: { '@type': 'Service', name, description, provider: { '@id': businessId } },
+    })),
   },
-  description: COMPANY.description,
-  areaServed: COMPANY.areaServed,
-  serviceType: 'Serigrafia em Sacolas Personalizadas',
 };
 
 const webSite = {
-  '@context': 'https://schema.org',
   '@type': 'WebSite',
+  '@id': `${siteUrl}#website`,
   name: COMPANY.name,
-  url: COMPANY.url,
+  url: siteUrl,
+  inLanguage: 'pt-BR',
+  publisher: { '@id': businessId },
 };
 
+const faqPage = {
+  '@type': 'FAQPage',
+  '@id': `${siteUrl}#faq`,
+  mainEntity: FAQ.map(({ question, answer }) => ({
+    '@type': 'Question',
+    name: question,
+    acceptedAnswer: { '@type': 'Answer', text: answer },
+  })),
+};
+
+const graph = {
+  '@context': 'https://schema.org',
+  '@graph': [webSite, localBusiness, faqPage],
+};
 ---
 
-<script type="application/ld+json" set:html={JSON.stringify(webSite)} />
-<script type="application/ld+json" set:html={JSON.stringify(localBusiness)} />
-<script type="application/ld+json" set:html={JSON.stringify(organization)} />
-<script type="application/ld+json" set:html={JSON.stringify(service)} />
+<script type="application/ld+json" set:html={JSON.stringify(graph)} />

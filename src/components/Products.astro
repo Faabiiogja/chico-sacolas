@@ -1,0 +1,126 @@
+---
+import { SERVICES } from '../config/company';
+import { WHATSAPP_URL } from '../consts';
+---
+
+<section class="products" id="produtos">
+  <div class="products-header">
+    <div>
+      <p class="eyebrow orange" style="margin-bottom:10px;">O que produzimos</p>
+      <h2 class="products-title">Sacolas kraft, ecobags e sacolas para <em>eventos</em>.</h2>
+    </div>
+    <p class="products-desc">Tiragens a partir de 100 unidades, com a sua logo em serigrafia. Produção no Guarujá com entrega em Santos, São Vicente, Praia Grande e toda a Baixada Santista.</p>
+  </div>
+
+  <div class="products-grid">
+    {SERVICES.map(({ name, detail }, i) => (
+      <article class="product-card">
+        <span class="product-num" aria-hidden="true">{String(i + 1).padStart(2, '0')}</span>
+        <h3 class="product-h">{name}</h3>
+        <p class="product-p">{detail}</p>
+      </article>
+    ))}
+  </div>
+
+  <div class="products-cta">
+    <a
+      href={WHATSAPP_URL}
+      target="_blank"
+      rel="noopener"
+      class="btn btn-primary"
+      data-event="click_whatsapp"
+      data-location="products"
+    >Pedir orçamento no WhatsApp →</a>
+  </div>
+</section>
+
+<style>
+.products {
+  background: var(--paper);
+  padding: 100px 64px;
+  border-bottom: 2px solid var(--light);
+}
+.products-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 56px;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+.products-title {
+  font-family: 'Special Elite', monospace;
+  font-weight: 400;
+  letter-spacing: .04em;
+  line-height: 1.1;
+  font-size: 52px;
+  max-width: 620px;
+}
+.products-title em {
+  font-style: normal;
+  color: var(--orange);
+}
+.products-desc {
+  font-size: 19px;
+  color: var(--mid);
+  max-width: 380px;
+  line-height: 1.5;
+}
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border: 2px solid var(--ink);
+}
+.product-card {
+  padding: 40px 32px;
+  background: var(--warm-white);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  border-right: 2px solid var(--ink);
+  transition: background .2s;
+}
+.product-card:last-child { border-right: none; }
+.product-card:hover { background: var(--paper); }
+.product-num {
+  font-family: 'Special Elite', monospace;
+  font-size: 11px;
+  letter-spacing: .2em;
+  color: var(--orange-dark);
+}
+.product-h {
+  font-family: 'Special Elite', monospace;
+  font-weight: 400;
+  letter-spacing: .04em;
+  line-height: 1.15;
+  font-size: 24px;
+}
+.product-p {
+  font-size: 19px;
+  color: var(--mid);
+  line-height: 1.5;
+}
+.products-cta {
+  margin-top: 40px;
+}
+
+@media (max-width: 639px) {
+  .products { padding: 60px 24px; }
+  .products-header { flex-direction: column; align-items: flex-start; margin-bottom: 36px; gap: 16px; }
+  .products-title { font-size: 28px; }
+  .products-desc { max-width: 100%; }
+  .products-grid { grid-template-columns: 1fr; }
+  .product-card { padding: 28px 24px; border-right: none; border-bottom: 2px solid var(--ink); }
+  .product-card:last-child { border-bottom: none; }
+  .product-h { font-size: 21px; }
+  .product-p { font-size: 17px; }
+}
+
+@media (min-width: 640px) and (max-width: 1023px) {
+  .products { padding: 72px 36px; }
+  .products-title { font-size: 36px; }
+  .products-grid { grid-template-columns: 1fr 1fr; }
+  .product-card:nth-child(2) { border-right: none; }
+  .product-card:nth-child(-n+2) { border-bottom: 2px solid var(--ink); }
+}
+</style>
